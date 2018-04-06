@@ -13,6 +13,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import './header.scss';
+import logo from './logo-white.svg';
 
 class Header extends React.Component {
   state = {
@@ -34,33 +35,31 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <div className="container">
+        <Navbar className="page-navbar" color="primary" dark expand="md">
+          <div className="container-fluid">
             <Link className="navbar-brand" to="/" onClick={this.close}>
-              Gatsby Bootstrap Starter
+              <div style={{ display: 'flex', flexFlow: 'row nowrap', alignItems: 'center' }}>
+                <img className="site-logo" src={logo} alt="JW" />
+                <div style={{ display: 'flex', flexFlow: 'column nowrap' }}>
+                  <span>Justin Waite</span>
+                  <span style={{ fontSize: 14 }}>Web and Mobile Developer</span>
+                </div>
+              </div>
             </Link>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
                   <Link className="nav-link" to="/spreadsheets" onClick={this.close}>
-                    Components
+                    Gallery
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
+                  <NavLink href="https://github.com/jdeanwaite">Github</NavLink>
                 </NavItem>
-                <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav caret>
-                    Options
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem>Option 1</DropdownItem>
-                    <DropdownItem>Option 2</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Reset</DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
+                <NavItem>
+                  <NavLink href="/lab">Lab</NavLink>
+                </NavItem>
               </Nav>
             </Collapse>
           </div>
@@ -69,4 +68,5 @@ class Header extends React.Component {
     );
   }
 }
+
 export default Header;

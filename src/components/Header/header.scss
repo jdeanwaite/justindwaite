@@ -1,0 +1,15 @@
+.page-navbar {
+  height: 96px;
+  font-family: "Source Code Pro", "Courier New", monospace;
+}
+
+.site-logo {
+  margin-right: 16px;
+  height: 64px;
+  width: 64px;
+}
+
+.navbar-brand {
+  display: flex;
+  flex-flow: row nowrap;
+}
