@@ -13,3 +13,8 @@
   display: flex;
   flex-flow: row nowrap;
 }
+
+.navbar-expand-md .navbar-nav .nav-link {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}

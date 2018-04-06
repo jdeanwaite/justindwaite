@@ -50,15 +50,22 @@ class Header extends React.Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <Link className="nav-link" to="/spreadsheets" onClick={this.close}>
-                    Gallery
+                  <Link className="nav-link" to="/showcase" onClick={this.close}>
+                    Showcase
                   </Link>
                 </NavItem>
                 <NavItem>
                   <NavLink target="_blank" href="https://github.com/jdeanwaite">Github</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/lab">Lab</NavLink>
+                  <Link className="nav-link" to="/lab" onClick={this.close}>
+                    Lab
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link className="nav-link" to="/hire-me" onClick={this.close}>
+                    Hire Me
+                  </Link>
                 </NavItem>
               </Nav>
             </Collapse>
