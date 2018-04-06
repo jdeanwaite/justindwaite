@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import Header from '../components/Header';
 import '../styles/main.scss';
 import './index.scss';
+import InfoBanner from '../components/InfoBanner/InfoBanner'
 
 const TemplateWrapper = ({ children }) => (
   <div>
@@ -15,6 +16,7 @@ const TemplateWrapper = ({ children }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
+    <InfoBanner/>
     <Header />
     <div style={{ paddingTop: 16 }}>{children()}</div>
   </div>

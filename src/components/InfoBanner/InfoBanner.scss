@@ -1,0 +1,21 @@
+@import '../../styles/main';
+
+#info-banner {
+  background-color: theme-color('primary-light');
+  cursor: pointer;
+}
+
+.banner-contents {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  height: 48px;
+  color: white;
+  font-weight: 500;
+  font-size: .9em;
+  font-family: "Source Code Pro", "Courier New", monospace;
+
+  p {
+    margin: 0;
+  }
+}

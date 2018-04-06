@@ -1,8 +1,12 @@
 $colors: (
-        primary: #7B00FC
+        primary: #7B00FC,
+        primary-light: #b54cff,
+        primary-dark: #3900c7,
 );
 $theme-colors: (
-        primary: #7B00FC
+        primary: #7B00FC,
+        primary-light: #b54cff,
+        primary-dark: #3900c7,
 );
 // Overwrite any other bootstrap files as necessary.
 @import "node_modules/bootstrap/scss/bootstrap";
