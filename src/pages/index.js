@@ -1,12 +1,18 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import './index.scss';
 
 const IndexPage = () => (
-  <div className="container">
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+  <div>
+    <div className="container-fluid headliner">
+      <h1>Simplicity and Scalability.</h1>
+      {/*<a href="#about" id="down-arrow">*/}
+        {/*<span>\/</span>*/}
+      {/*</a>*/}
+    </div>
+    <div className="container-fluid full-page" id="about">
+      <p>Testing 123</p>
+    </div>
   </div>
 );
 

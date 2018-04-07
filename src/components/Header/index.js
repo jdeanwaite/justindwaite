@@ -7,17 +7,24 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from 'reactstrap';
 import './header.scss';
-import logo from './logo-white.svg';
+import logo from './logo-blue.svg';
+
+const descriptors = ['Web', 'Mobile', 'Backend'];
 
 class Header extends React.Component {
   state = {
     isOpen: false,
+    descriptorIndex: 0,
+    descriptor: descriptors[0],
+  }
+
+  constructor(props) {
+    super(props);
+    setTimeout(() => {
+      this.handleWordChange();
+    }, 3000);
   }
 
   toggle = () => {
@@ -32,16 +39,90 @@ class Header extends React.Component {
     });
   }
 
+  removeLetter = (timeout) => {
+    if (!this.state.descriptor || !this.state.descriptor.length) return;
+    const descriptor = this.state.descriptor.slice(0, -1);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.setState({
+          descriptor,
+        });
+        resolve();
+      }, timeout);
+    });
+  }
+
+  deleteWord = async () => {
+    const currentWord = this.state.descriptor;
+    const timePerLetter = 750 / currentWord.length;
+    for (let i = 0; i < currentWord.length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      await this.removeLetter(timePerLetter);
+    }
+  }
+
+  addLetter = (timeout) => {
+    if (this.state.descriptor === descriptors[this.state.descriptorIndex]) {
+      return;
+    }
+    const currLength = this.state.descriptor.length;
+    const descriptor = descriptors[this.state.descriptorIndex].substr(0, currLength + 1);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.setState({ descriptor });
+        resolve();
+      }, timeout);
+    });
+  }
+
+  addWord = async () => {
+    console.log('adding word');
+    let nextIndex = this.state.descriptorIndex + 1;
+    if (nextIndex >= descriptors.length) {
+      nextIndex = 0;
+    }
+    this.setState({ descriptorIndex: nextIndex });
+    const nextWord = descriptors[nextIndex];
+    const timePerLetter = 750 / nextWord.length;
+    for (let i = 0; i < nextWord.length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      console.log('next letter');
+      await this.addLetter(timePerLetter);
+    }
+  }
+
+  handleWordChange = async () => {
+    await this.deleteWord();
+    await this.addWord();
+    setTimeout(this.handleWordChange, 3000);
+    // const currentWord = this.state.descriptor;
+    // let index = this.state.descriptorIndex + 1;
+    // if (index >= descriptors.length) {
+    //   index = 0;
+    // }
+    // const nextWord = descriptors[index];
+    // const timePerLetter = 2000 / nextWord.length;
+    // setTimeout(() => {
+    //
+    // });
+    // this.setState({ descriptorIndex: index, descriptor: descriptors[index] });
+  }
+
   render() {
+    const word = this.state.descriptor;
     return (
       <div>
-        <Navbar className="page-navbar" color="primary" dark expand="md">
+        <Navbar className="page-navbar" color="white" light expand="md">
           <Link className="navbar-brand" to="/" onClick={this.close}>
             <div style={{ display: 'flex', flexFlow: 'row nowrap', alignItems: 'center' }}>
               <img className="site-logo" src={logo} alt="JW" />
               <div style={{ display: 'flex', flexFlow: 'column nowrap' }}>
                 <span>Justin Waite</span>
-                <span style={{ fontSize: 14 }}>Web and Mobile Developer</span>
+                <span style={{ fontSize: 14, display: 'flex', alignItems: 'center' }}>
+                  <span>{word}</span>
+                  <span className="cursor blink" />
+                  &nbsp;Developer
+                </span>
               </div>
             </div>
           </Link>
@@ -62,8 +143,8 @@ class Header extends React.Component {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link className="nav-link" to="/hire-me" onClick={this.close}>
-                    Hire Me
+                <Link className="nav-link" to="/hire-me" onClick={this.close} style={{ color: '#000' }}>
+                  <strong>Hire Me</strong>
                 </Link>
               </NavItem>
             </Nav>

@@ -7,7 +7,7 @@ export default class InfoBanner extends Component {
       <div id="info-banner">
         <div className="container-fluid">
           <div className="banner-contents">
-            <p>I'm currently available for hire!</p>
+            <p>Available for hire. Let's talk!</p>
           </div>
         </div>
       </div>
