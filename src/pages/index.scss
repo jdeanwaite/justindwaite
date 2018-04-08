@@ -1,9 +1,31 @@
 @import '../styles/main';
 
 .full-page {
-  height: 100vh;
+  min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2em;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+#about {
+  //@include angle(both, true, 5deg);
+  color: rgba(255, 255, 255, .87);
   background-color: var(--blue);
-  @include angle(before, true, 5deg);
+
+  h1 {
+    margin-bottom: 32px;
+  }
+
+  .profile-image {
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    margin-bottom: 32px;
+  }
+}
+
+#technologies {
 }
 
 .headliner {
@@ -17,7 +39,7 @@
   text-align: center;
 
   h1 {
-    max-width: 500px;
+    //max-width: 500px;
     padding-bottom: 64px;
     font-family: "Source Code Pro", "Courier New", monospace;
     color: rgba(0, 0, 0, .87);

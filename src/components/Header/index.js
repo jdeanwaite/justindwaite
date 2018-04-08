@@ -76,7 +76,6 @@ class Header extends React.Component {
   }
 
   addWord = async () => {
-    console.log('adding word');
     let nextIndex = this.state.descriptorIndex + 1;
     if (nextIndex >= descriptors.length) {
       nextIndex = 0;
@@ -86,7 +85,6 @@ class Header extends React.Component {
     const timePerLetter = 750 / nextWord.length;
     for (let i = 0; i < nextWord.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      console.log('next letter');
       await this.addLetter(timePerLetter);
     }
   }

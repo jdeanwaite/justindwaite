@@ -10,5 +10,14 @@ module.exports = {
         precision: 8,
       },
     },
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'img',
+        path: `${__dirname}/src/img/`,
+      },
+    },
   ],
 };
